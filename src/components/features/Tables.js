@@ -12,11 +12,11 @@ const Tables = () => {
       <div className="d-flex justify-content-between">
         <h1>All tables</h1>
       </div>
-        <ul>
+        <ul className="list-group list-unstyled">
           {tables.map(table => 
-          <li key={table.id}>
-            <h3>Table {table.id}</h3>
-            <p className="ps-4 m-0"><span className="fw-bold">Status: </span>{table.status}</p>
+          <li key={table.id} className="d-flex my-3 border-bottom">
+            <h2 className="mx-3">Table {table.id}</h2>
+            <p className="m-2"><span className="fw-bold ">Status: </span>{table.status}</p>
             <Link className="ms-auto p-2" to={`/table/${table.id}`}>
               <Button variant="primary" >Show more</Button>
             </Link>

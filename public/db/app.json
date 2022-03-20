@@ -3,9 +3,9 @@
     {
       "id": 1,
       "status": "Busy",
-      "peopleAmount": "3",
+      "peopleAmount": "2",
       "maxPeopleAmount": "4",
-      "bill": "44"
+      "bill": "45"
     },
     {
       "id": 2,
@@ -31,7 +31,7 @@
     {
       "id": 5,
       "status": "Busy",
-      "peopleAmount": 3,
+      "peopleAmount": "2",
       "maxPeopleAmount": 4,
       "bill": 25
     }
