@@ -25,6 +25,53 @@ const Table = () => {
     dispatch(updateTableData({status, peopleAmount, maxPeopleAmount, bill, id }))
     navigate("/")
   }
+
+  const statusValidator = (value) => {
+    if (value === "Free" || value === "Cleaning"){
+      setPeopleAmount(0);
+      setBill(0);
+    }
+    if (value === "Reserved"){
+      setPeopleAmount(maxPeopleAmount);
+    }
+    setStatus(value);
+  }
+
+  const maxPeopleValidation = (value) => {
+    if (value < 0 || value === ''){
+      value = 0;
+    }
+    if (value > 10 || isNaN(value)){
+      value = maxPeopleAmount;
+    }
+    if (value < peopleAmount){
+      value = peopleAmount;
+    }
+    setMaxPeopleAmount(value);
+  }
+
+  const peopleValidator = (value) => {
+    if (value < 0 || value === '' || status === "Free" || status === "Cleaning"){
+      value = 0;
+    }
+    if (value >= maxPeopleAmount){
+      value = maxPeopleAmount;
+    }
+    setPeopleAmount(value);
+  }
+
+  const billValidate = (value) => {
+    if (value < 0 || value === ''){
+      value = 0;
+    }
+    if (isNaN(value)){
+      value = bill;
+    }
+    if (status !== "Busy"){
+      value = "0"
+    }
+    setBill(value);
+  }
   
   return(
     <Container>
@@ -33,7 +80,7 @@ const Table = () => {
         <Form.Group>
           <div className="d-flex mx-3 my-4 w-25">
             <Form.Label className="m-2 fw-bold">Status:</Form.Label>
-              <Form.Select onChange={e => setStatus(e.target.value)}>
+              <Form.Select onChange={e => statusValidator(e.target.value)}>
                 <option value={status}>
                   {status}
                 </option>
@@ -51,15 +98,15 @@ const Table = () => {
           <div className="d-flex mx-3 my-4 w-25">
               <Form.Label className="m-2 fw-bold">People:</Form.Label>
               <Form.Control className="text-center"
-                type="text" 
+                type="number" 
                 value={peopleAmount} 
-                onChange={e => setPeopleAmount(e.target.value)} 
+                onChange={e => peopleValidator(e.target.value)} 
               />
               <span className="m-2">/</span> 
               <Form.Control className="text-center"
-                type="text" 
+                type="number" 
                 value={maxPeopleAmount} 
-                onChange={e => setMaxPeopleAmount(e.target.value)} 
+                onChange={e => maxPeopleValidation(e.target.value)} 
               />
             </div>
           </Form.Group>
@@ -68,9 +115,9 @@ const Table = () => {
               <Form.Label className="m-2 fw-bold">Bill:</Form.Label>
               <span className="m-2">$</span>
               <Form.Control className="w-25" 
-                type="text"
+                type="number"
                 value={bill}
-                onChange={e => setBill(e.target.value)}
+                onChange={e => billValidate(e.target.value)}
               />
             </div>
           </Form.Group>      
