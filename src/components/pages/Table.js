@@ -5,6 +5,7 @@ import { useParams } from 'react-router';
 import { getTableId, updateTableData } from '../../redux/tableRedux'
 import { useNavigate } from 'react-router-dom';
 import shortid from 'shortid';
+import Instructions from "../views/Instructions";
 
 const Table = () => {
 
@@ -37,7 +38,7 @@ const Table = () => {
     setStatus(value);
   }
 
-  const maxPeopleValidation = (value) => {
+  const maxPeopleValidator = (value) => {
     if (value < 0 || value === ''){
       value = 0;
     }
@@ -60,11 +61,14 @@ const Table = () => {
     setPeopleAmount(value);
   }
 
-  const billValidate = (value) => {
+  const billValidator = (value) => {
     if (value < 0 || value === ''){
       value = 0;
     }
     if (isNaN(value)){
+      value = bill;
+    }
+    if (value > 2000){
       value = bill;
     }
     if (status !== "Busy"){
@@ -106,7 +110,7 @@ const Table = () => {
               <Form.Control className="text-center"
                 type="number" 
                 value={maxPeopleAmount} 
-                onChange={e => maxPeopleValidation(e.target.value)} 
+                onChange={e => maxPeopleValidator(e.target.value)} 
               />
             </div>
           </Form.Group>
@@ -114,15 +118,17 @@ const Table = () => {
             <div className="d-flex mx-3 my-4 w-25">
               <Form.Label className="m-2 fw-bold">Bill:</Form.Label>
               <span className="m-2">$</span>
-              <Form.Control className="w-25" 
+              <Form.Control className="w-50"
+                max="2000"
                 type="number"
                 value={bill}
-                onChange={e => billValidate(e.target.value)}
+                onChange={e => billValidator(e.target.value)}
               />
             </div>
           </Form.Group>      
           <Button variant="primary" type="submit" className="m-3">Update</Button>
       </Form>
+      <Instructions />
     </Container>
   )
 }
