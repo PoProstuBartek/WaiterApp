@@ -2,6 +2,7 @@ import { Container, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { getAllTables } from "../../redux/tableRedux";
 import { Link } from "react-router-dom";
+import RemoveButton from "./RemoveButton";
 
 const Tables = () => {
 
@@ -20,6 +21,7 @@ const Tables = () => {
             <Link className="ms-auto p-2" to={`/table/${table.id}`}>
               <Button variant="primary" >Show more</Button>
             </Link>
+            <RemoveButton tableId={table.id}/>
           </li>)}
         </ul>
         <Link className="ms-auto p-2" to={'/newTable'}>
