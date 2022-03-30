@@ -8,6 +8,7 @@ import Footer from "./components/views/Footer";
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchTables } from './redux/tableRedux';
+import NewTable from "./components/pages/NewTable";
 
 const App = () => {
 
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/table/:id" element={<Table />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/newTable" element={<NewTable />} />
         </Routes>
         <Footer />
       </Container>

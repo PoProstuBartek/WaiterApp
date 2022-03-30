@@ -2,10 +2,10 @@
   "tables": [
     {
       "id": 1,
-      "status": "Cleaning",
-      "peopleAmount": 0,
+      "status": "Busy",
+      "peopleAmount": "2",
       "maxPeopleAmount": "4",
-      "bill": 0
+      "bill": "22"
     },
     {
       "id": 2,
@@ -34,6 +34,13 @@
       "peopleAmount": "2",
       "maxPeopleAmount": 4,
       "bill": 25
+    },
+    {
+      "status": "Busy",
+      "peopleAmount": "2",
+      "maxPeopleAmount": 4,
+      "bill": "66",
+      "id": 6
     }
   ]
 }

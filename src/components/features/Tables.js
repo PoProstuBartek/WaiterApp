@@ -22,7 +22,9 @@ const Tables = () => {
             </Link>
           </li>)}
         </ul>
-      
+        <Link className="ms-auto p-2" to={'/newTable'}>
+          <Button variant="primary">Create new table</Button>
+        </Link>
     </Container>
   )
 }
