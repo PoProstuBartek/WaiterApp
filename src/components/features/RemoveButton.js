@@ -10,7 +10,7 @@ const RemoveButton = props => {
   }
 
   return (
-    <CloseButton onClick={() => removeTable(props.tableId)} />
+    <CloseButton className="mt-3" onClick={() => removeTable(props.tableId)} />
   )
 }
 
