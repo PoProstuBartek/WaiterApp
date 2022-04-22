@@ -80,7 +80,7 @@ const TableForm = () => {
   return(
     <Form onSubmit={handleSubmit}>
         <Form.Group>
-          <div className="d-flex mx-3 my-4 w-25">
+          <div className="d-flex mx-3 my-4 w-50">
             <Form.Label className="m-2 fw-bold">Status:</Form.Label>
               <Form.Select onChange={e => statusValidator(e.target.value)}>
                 <option value={status}>
@@ -97,7 +97,7 @@ const TableForm = () => {
             </div>
           </Form.Group>
           <Form.Group>
-          <div className="d-flex mx-3 my-4 w-25">
+          <div className="d-flex mx-3 my-4 w-50">
               <Form.Label className="m-2 fw-bold">People:</Form.Label>
               <Form.Control className="text-center"
                 type="number" 
@@ -113,7 +113,7 @@ const TableForm = () => {
             </div>
           </Form.Group>
           <Form.Group>
-            <div className="d-flex mx-3 my-4 w-25">
+            <div className="d-flex mx-3 my-4 w-50">
               <Form.Label className="m-2 fw-bold">Bill:</Form.Label>
               <span className="m-2">$</span>
               <Form.Control className="w-50"
